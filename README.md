@@ -64,7 +64,7 @@ cd DeepOCR
 conda activate deeporc
 
 # Install additional dependencies for OCR
-pip install safetensors einops easydict mupdf
+pip install safetensors einops easydict pymupdf
 ```
 
 ## 📦 Model Checkpoints
@@ -250,6 +250,7 @@ vila-infer \
 
 ```python
 import llava
+from llava.media import Image
 
 # Load model
 model = llava.load("./easy_deepocr_sam_clip")
@@ -264,6 +265,7 @@ response = model.generate_content(prompt)
 ### Chart Parsing
 
 ```python
+# Same setup as above (import llava, from llava.media import Image, model = llava.load(...))
 prompt = [Image("chart.png"), "Parse the figure."]
 response = model.generate_content(prompt)
 # Returns: HTML table or structured data
